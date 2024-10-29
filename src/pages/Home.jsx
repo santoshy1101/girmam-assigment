@@ -1,23 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import heroBackgound from '../assets/heroBackground.png'
 import Search from '../components/Search'
-import { useSearch } from '../context/SearchContext'
-import { useNavigate } from 'react-router-dom';
 import blueLogo from '../assets/blueLogo.svg'
 
-
 const Home = () => {
-  const { setSearchQuery } = useSearch()
-  const navigate = useNavigate()
-
-  const handleSearch = (query) => {
-    setSearchQuery(query)
-    navigate('/results');
-  }
-
-  useEffect(()=>{
-    setSearchQuery("")
-  },[])
   return (
     <div
       className="relative h-screen bg-center bg-cover"
@@ -34,9 +20,8 @@ const Home = () => {
             />
             <h1 className="text-4xl font-semibold sm:text-7xl">Girman</h1>
           </div>
-          <Search onSearch={handleSearch} />
+          <Search />
         </div>
-
       </div>
     </div>
   )

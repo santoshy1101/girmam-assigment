@@ -2,16 +2,10 @@ import React from 'react'
 import Logo from '../assets/logo.svg'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Search from './Search'
-import { useSearch } from '../context/SearchContext'
 
 const Navbar = () => {
   const { pathname } = useLocation()
-  const { setSearchQuery } = useSearch()
   const navigate = useNavigate()
-
-  const handleSearch = (query) => {
-    setSearchQuery(query)
-  }
 
   return (
     <div
@@ -31,7 +25,7 @@ const Navbar = () => {
         className={`${pathname.includes('results') && 'w-[80%] md:w-[40%]'}`}
       >
         {pathname.includes('results') ? (
-          <Search onSearch={handleSearch} />
+          <Search />
         ) : (
           <div className="flex space-x-4">
             <a

@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
-import { useSearch } from '../context/SearchContext'
-import { useLocation } from 'react-router-dom'
+import {} from '../context/SearchContext'
+import { useNavigate } from 'react-router-dom'
 
-const Search = ({ onSearch }) => {
+const Search = () => {
   const [query, setQuery] = useState('')
-  const { searchQuery } = useSearch()
-  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   const handleSearch = () => {
-    onSearch(query)
+    if (!query.trim()) return
+    const params = new URLSearchParams()
+    params.append('query', query)
+
+    navigate(`/results?${params.toString()}`)
   }
 
   useEffect(() => {
-    pathname.includes('result') && searchQuery && setQuery(searchQuery)
-  }, [])
+    const params = new URLSearchParams(location.search)
+    const urlQuery = params.get('query')
+
+    if (urlQuery) {
+      setQuery(urlQuery)
+    }
+  }, [location.search])
 
   return (
     <div className="flex items-center pl-3 bg-white border border-gray-300 rounded-md shadow-sm w-90 sm:w-[100%] focus-within:ring-2 focus-within:ring-blue-500">
