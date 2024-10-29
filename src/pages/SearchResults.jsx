@@ -29,9 +29,9 @@ const Profile = () => {
     ) : (
       <div className="flex flex-col items-center justify-center p-4 text-center col-span-full">
         <img
-          src={empty} // Replace with your image URL
+          src={empty} 
           alt="No results found"
-          className="w-64 h-64 mb-4" // Adjust size as needed
+          className="w-64 h-64 mb-4" 
         />
       </div>
     )}
