@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import heroBackgound from '../assets/heroBackground.png'
 import Search from '../components/Search'
 import { useSearch } from '../context/SearchContext'
@@ -14,6 +14,10 @@ const Home = () => {
     setSearchQuery(query)
     navigate('/results');
   }
+
+  useEffect(()=>{
+    setSearchQuery("")
+  },[])
   return (
     <div
       className="relative h-screen bg-center bg-cover"
